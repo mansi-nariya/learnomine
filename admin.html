@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Inquiries</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #ff9500 0%, #ffb347 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .header p {
+            margin-top: 0.5rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #ff9500;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #ff9500;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #e6850e;
+            transform: translateY(-2px);
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+        }
+
+        .inquiries-table {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .table-header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 1.5rem;
+        }
+
+        .table-header h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .table-container {
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #333;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        .no-data {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: #ff9500;
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #ff9500;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .search-box {
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            width: 300px;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #ff9500;
+        }
+
+        .back-link {
+            color: white;
+            text-decoration: none;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+
+        .back-link:hover {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+
+            .table-container {
+                overflow-x: auto;
+            }
+
+            table {
+                min-width: 600px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Admin Panel</h1>
+        <p>Manage Student Inquiries</p>
+        <a href="/" class="back-link">← Back to Website</a>
+    </div>
+
+    <div class="container">
+        <div class="stats" id="stats">
+            <div class="stat-card">
+                <div class="stat-number" id="totalInquiries">-</div>
+                <div class="stat-label">Total Inquiries</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="todayInquiries">-</div>
+                <div class="stat-label">Today's Inquiries</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="thisWeekInquiries">-</div>
+                <div class="stat-label">This Week</div>
+            </div>
+        </div>
+
+        <div class="actions">
+            <h2>Student Inquiries</h2>
+            <div>
+                <input type="text" class="search-box" id="searchBox" placeholder="Search by name, email, or mobile...">
+                <button class="btn btn-primary" onclick="refreshData()">Refresh</button>
+            </div>
+        </div>
+
+        <div class="inquiries-table">
+            <div class="table-header">
+                <h2>Inquiry List</h2>
+            </div>
+            <div class="table-container">
+                <div id="loading" class="loading">
+                    <div class="spinner"></div>
+                    Loading inquiries...
+                </div>
+                <div id="tableContent" style="display: none;">
+                    <table id="inquiriesTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Mobile</th>
+                                <th>Email</th>
+                                <th>Date & Time</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="inquiriesBody">
+                        </tbody>
+                    </table>
+                </div>
+                <div id="noData" class="no-data" style="display: none;">
+                    <h3>No inquiries found</h3>
+                    <p>When students submit the contact form, their inquiries will appear here.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let allInquiries = [];
+
+        // Load inquiries on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadInquiries();
+            
+            // Set up search functionality
+            document.getElementById('searchBox').addEventListener('input', filterInquiries);
+        });
+
+        async function loadInquiries() {
+            try {
+                document.getElementById('loading').style.display = 'block';
+                document.getElementById('tableContent').style.display = 'none';
+                document.getElementById('noData').style.display = 'none';
+
+                const response = await fetch('/api/inquiries');
+                const result = await response.json();
+
+                if (result.success) {
+                    allInquiries = result.data;
+                    updateStats(allInquiries);
+                    displayInquiries(allInquiries);
+                } else {
+                    throw new Error(result.message);
+                }
+            } catch (error) {
+                console.error('Error loading inquiries:', error);
+                alert('Error loading inquiries: ' + error.message);
+            } finally {
+                document.getElementById('loading').style.display = 'none';
+            }
+        }
+
+        function updateStats(inquiries) {
+            const total = inquiries.length;
+            
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const todayCount = inquiries.filter(inquiry => {
+                const inquiryDate = new Date(inquiry.timestamp);
+                inquiryDate.setHours(0, 0, 0, 0);
+                return inquiryDate.getTime() === today.getTime();
+            }).length;
+
+            const weekAgo = new Date();
+            weekAgo.setDate(weekAgo.getDate() - 7);
+            const weekCount = inquiries.filter(inquiry => {
+                const inquiryDate = new Date(inquiry.timestamp);
+                return inquiryDate >= weekAgo;
+            }).length;
+
+            document.getElementById('totalInquiries').textContent = total;
+            document.getElementById('todayInquiries').textContent = todayCount;
+            document.getElementById('thisWeekInquiries').textContent = weekCount;
+        }
+
+        function displayInquiries(inquiries) {
+            const tbody = document.getElementById('inquiriesBody');
+            
+            if (inquiries.length === 0) {
+                document.getElementById('noData').style.display = 'block';
+                document.getElementById('tableContent').style.display = 'none';
+                return;
+            }
+
+            document.getElementById('tableContent').style.display = 'block';
+            document.getElementById('noData').style.display = 'none';
+
+            tbody.innerHTML = inquiries.map(inquiry => `
+                <tr>
+                    <td>${inquiry.id}</td>
+                    <td>${escapeHtml(inquiry.name)}</td>
+                    <td>${escapeHtml(inquiry.mobile)}</td>
+                    <td>${escapeHtml(inquiry.email)}</td>
+                    <td>${formatDateTime(inquiry.timestamp)}</td>
+                    <td>
+                        <button class="btn btn-danger" onclick="deleteInquiry(${inquiry.id})">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function filterInquiries() {
+            const searchTerm = document.getElementById('searchBox').value.toLowerCase();
+            
+            if (!searchTerm) {
+                displayInquiries(allInquiries);
+                return;
+            }
+
+            const filtered = allInquiries.filter(inquiry => 
+                inquiry.name.toLowerCase().includes(searchTerm) ||
+                inquiry.email.toLowerCase().includes(searchTerm) ||
+                inquiry.mobile.toLowerCase().includes(searchTerm)
+            );
+
+            displayInquiries(filtered);
+        }
+
+        async function deleteInquiry(id) {
+            if (!confirm('Are you sure you want to delete this inquiry?')) {
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/inquiries/${id}`, {
+                    method: 'DELETE'
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    // Remove from local array
+                    allInquiries = allInquiries.filter(inquiry => inquiry.id !== id);
+                    updateStats(allInquiries);
+                    filterInquiries(); // Refresh display
+                    alert('Inquiry deleted successfully');
+                } else {
+                    throw new Error(result.message);
+                }
+            } catch (error) {
+                console.error('Error deleting inquiry:', error);
+                alert('Error deleting inquiry: ' + error.message);
+            }
+        }
+
+        function refreshData() {
+            loadInquiries();
+            document.getElementById('searchBox').value = '';
+        }
+
+        function formatDateTime(timestamp) {
+            const date = new Date(timestamp);
+            return date.toLocaleString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: true
+            });
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+/* Main CSS file that imports all component CSS */
+@import url('css/reset.css');
+@import url('css/header-footer.css');
+@import url('css/home-hero.css');
+@import url('css/stats-section.css');
+@import url('css/courses.css');
+@import url('css/why-choose.css');
+@import url('css/awards.css');
+@import url('css/testimonials-contact.css');
+@import url('css/responsive.css');
