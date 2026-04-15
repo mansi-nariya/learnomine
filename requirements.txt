@@ -1,0 +1,84 @@
+# Learnnomine Educational Website - Requirements
+
+## System Requirements
+- Node.js (version 14.0.0 or higher)
+- npm (comes with Node.js)
+- Web browser (Chrome, Firefox, Safari, Edge)
+
+## Project Dependencies
+# The following npm packages will be automatically installed when running 'npm install':
+
+## Production Dependencies (from package.json):
+- express@^4.21.2          # Web framework for Node.js
+- body-parser@^1.20.2      # HTTP request body parsing middleware
+- sqlite3@^5.1.6           # SQLite database interface
+- cors@^2.8.5              # Cross-Origin Resource Sharing middleware
+
+## Development Dependencies:
+- nodemon@^3.0.1           # Development server with auto-reload
+
+## Installation Instructions:
+
+1. Install Node.js:
+   - Download from: https://nodejs.org/
+   - Choose LTS (Long Term Support) version
+   - Follow installation instructions for your operating system
+
+2. Clone/Download the project:
+   - Extract all files to a directory of your choice
+
+3. Install project dependencies:
+   - Open terminal/command prompt in the project directory
+   - Run: npm install
+   - This will install all dependencies listed in package.json
+
+4. Start the application:
+   - Option 1: npm start (production mode)
+   - Option 2: npm run dev (development mode with auto-reload)
+   - Option 3: Run the PowerShell script: .\Start-Website.ps1 (Windows)
+
+5. Access the website:
+   - Main website: http://localhost:8080
+   - Admin panel: http://localhost:8080/admin
+
+## Database Information:
+- Uses SQLite database (inquiries.db)
+- Database file is created automatically on first run
+- Stores contact form inquiries
+
+## File Structure Overview:
+- server.js          # Main Node.js server file
+- package.json       # Project configuration and dependencies
+- index.html         # Main website page
+- admin.html         # Admin panel for viewing inquiries
+- assets/           # Static assets (images, icons)
+- css/              # Stylesheets
+- js/               # Client-side JavaScript
+- pages/            # Additional HTML pages
+- components/       # Reusable HTML components
+
+## Port Configuration:
+- Default port: 8080
+- Can be changed by setting PORT environment variable
+
+## Browser Compatibility:
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+- Opera (latest)
+
+## Troubleshooting:
+- If port 8080 is busy, the server will fail to start
+- Check if Node.js is properly installed: node --version
+- Check if npm is available: npm --version
+- Clear npm cache if installation fails: npm cache clean --force
+- Delete node_modules folder and run npm install again if needed
+
+## Features:
+- Responsive educational website
+- Contact form with validation
+- SQLite database for inquiry storage
+- Admin panel for managing inquiries
+- Static file serving
+- CORS enabled for API access

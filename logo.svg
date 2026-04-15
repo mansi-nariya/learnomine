@@ -1,0 +1,19 @@
+<!-- Logo SVG for Learnnomine -->
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="60" viewBox="0 0 200 60">
+  <style>
+    .text { font-family: 'Arial', sans-serif; font-weight: bold; }
+    .learn { fill: #2c3e50; }
+    .nomine { fill: #ff9500; }
+    .icon { fill: #ff9500; }
+  </style>
+  <g>
+    <!-- Icon -->
+    <path class="icon" d="M30 10 L45 20 L30 30 L15 20 Z" />
+    <path class="icon" d="M30 15 L40 22 L30 29 L20 22 Z" fill="#2c3e50" />
+    <path class="icon" d="M30 35 L45 25 L45 45 L30 55 L15 45 L15 25 Z" fill-opacity="0.7" />
+    
+    <!-- Text -->
+    <text x="60" y="35" class="text learn" font-size="22">Learn</text>
+    <text x="115" y="35" class="text nomine" font-size="22">nomine</text>
+  </g>
+</svg>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Works - Learnnomine</title>
+    <meta name="description" content="Explore impressive projects and works created by our talented students.">
+    <meta name="keywords" content="student projects, student works, portfolios, education, online courses">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="apple-touch-icon" href="../assets/favicon.svg">
+    <base href="">
+    
+    <!-- External CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+    <!-- Include Header -->
+    <div id="header-container"></div>
+    
+    <!-- Student Works Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Student <span class="highlight">Works</span></h1>
+            <p>Explore the amazing projects created by our talented students.</p>
+        </div>
+    </section>
+    
+    <!-- Student Works Section -->
+    <section class="student-works-section" id="student-works">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Impressive <span class="highlight">Student Projects</span></h2>
+                <div class="works-filter">
+                    <div class="filter-container">
+                        <button class="filter-btn active" data-filter="all">All Works</button>
+                        <button class="filter-btn" data-filter="web">Web Design</button>
+                        <button class="filter-btn" data-filter="mobile">Mobile Apps</button>
+                        <button class="filter-btn" data-filter="ui">UI/UX</button>
+                        <button class="filter-btn" data-filter="data">Data Science</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="works-grid">
+                <!-- Web Design Project -->
+                <div class="work-item" data-category="web" data-aos="fade-up" data-aos-delay="100">
+                    <div class="work-image">
+                        <img src="../assets/project-placeholder.jpg" alt="E-commerce Website">
+                    </div>
+                    <div class="work-overlay">
+                        <h3>E-commerce Website</h3>
+                        <p>A fully responsive e-commerce platform with payment integration</p>
+                        <div class="work-tags">
+                            <span>HTML/CSS</span>
+                            <span>JavaScript</span>
+                            <span>React</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mobile App Project -->
+                <div class="work-item" data-category="mobile" data-aos="fade-up" data-aos-delay="200">
+                    <div class="work-image">
+                        <img src="../assets/project-placeholder.jpg" alt="Fitness Tracker App">
+                    </div>
+                    <div class="work-overlay">
+                        <h3>Fitness Tracker App</h3>
+                        <p>Mobile application for tracking workouts and fitness goals</p>
+                        <div class="work-tags">
+                            <span>Flutter</span>
+                            <span>Dart</span>
+                            <span>Firebase</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- UI/UX Design Project -->
+                <div class="work-item" data-category="ui" data-aos="fade-up" data-aos-delay="300">
+                    <div class="work-image">
+                        <img src="../assets/project-placeholder.jpg" alt="Banking App UI Design">
+                    </div>
+                    <div class="work-overlay">
+                        <h3>Banking App UI Design</h3>
+                        <p>Modern and user-friendly interface for a mobile banking application</p>
+                        <div class="work-tags">
+                            <span>Figma</span>
+                            <span>UI Design</span>
+                            <span>Prototyping</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Data Science Project -->
+                <div class="work-item" data-category="data" data-aos="fade-up" data-aos-delay="400">
+                    <div class="work-image">
+                        <img src="../assets/project-placeholder.jpg" alt="Predictive Analysis Model">
+                    </div>
+                    <div class="work-overlay">
+                        <h3>Predictive Analysis Model</h3>
+                        <p>Machine learning model for predicting customer behavior</p>
+                        <div class="work-tags">
+                            <span>Python</span>
+                            <span>TensorFlow</span>
+                            <span>Data Visualization</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Add more project items as needed -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- Student Spotlight Section -->
+    <section class="student-spotlight">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Student <span class="highlight">Spotlight</span></h2>
+            </div>
+            
+            <div class="spotlight-grid">
+                <div class="spotlight-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="spotlight-image">
+                        <img src="../assets/student-placeholder.jpg" alt="Student: John Doe">
+                    </div>
+                    <div class="spotlight-content">
+                        <h3>John Doe</h3>
+                        <p class="spotlight-course">Full Stack Web Development</p>
+                        <p class="spotlight-desc">John created an award-winning e-commerce platform that's now being used by multiple small businesses. His project showcases advanced React implementation with a Node.js backend.</p>
+                    </div>
+                </div>
+                
+                <div class="spotlight-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="spotlight-image">
+                        <img src="../assets/student-placeholder.jpg" alt="Student: Jane Smith">
+                    </div>
+                    <div class="spotlight-content">
+                        <h3>Jane Smith</h3>
+                        <p class="spotlight-course">UI/UX Design</p>
+                        <p class="spotlight-desc">Jane's healthcare app design received recognition from industry professionals for its accessible interface and innovative approach to patient management systems.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Include Footer -->
+    <div id="footer-container"></div>
+    
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        // Load components
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('../components/header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header-container').innerHTML = data;
+                });
+                
+            fetch('../components/footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-container').innerHTML = data;
+                });
+                
+            // Project filtering
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const workItems = document.querySelectorAll('.work-item');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    btn.classList.add('active');
+                    
+                    const filterValue = btn.getAttribute('data-filter');
+                    
+                    // Filter work items
+                    workItems.forEach(item => {
+                        if (filterValue === 'all') {
+                            item.style.display = 'block';
+                            setTimeout(() => {
+                                item.classList.add('filtered-in');
+                                item.classList.remove('filtered-out');
+                            }, 100);
+                        } else if (item.getAttribute('data-category') === filterValue) {
+                            item.style.display = 'block';
+                            setTimeout(() => {
+                                item.classList.add('filtered-in');
+                                item.classList.remove('filtered-out');
+                            }, 100);
+                        } else {
+                            item.classList.add('filtered-out');
+                            item.classList.remove('filtered-in');
+                            setTimeout(() => {
+                                item.style.display = 'none';
+                            }, 500);
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

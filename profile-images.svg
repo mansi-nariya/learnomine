@@ -1,0 +1,47 @@
+<!-- Profile Images SVG -->
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="100" viewBox="0 0 600 100">
+  <defs>
+    <linearGradient id="profileGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff9500" />
+      <stop offset="100%" stop-color="#ffb347" />
+    </linearGradient>
+    <linearGradient id="profileGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#667eea" />
+      <stop offset="100%" stop-color="#764ba2" />
+    </linearGradient>
+    <linearGradient id="profileGradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4facfe" />
+      <stop offset="100%" stop-color="#00f2fe" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Profile 1 -->
+  <circle cx="50" cy="50" r="40" fill="url(#profileGradient1)" />
+  <circle cx="50" cy="40" r="15" fill="#fff" opacity="0.3" />
+  <path d="M25 80 Q50 100 75 80" fill="#fff" opacity="0.3" />
+  
+  <!-- Profile 2 -->
+  <circle cx="150" cy="50" r="40" fill="url(#profileGradient2)" />
+  <circle cx="150" cy="40" r="15" fill="#fff" opacity="0.3" />
+  <path d="M125 80 Q150 100 175 80" fill="#fff" opacity="0.3" />
+  
+  <!-- Profile 3 -->
+  <circle cx="250" cy="50" r="40" fill="url(#profileGradient3)" />
+  <circle cx="250" cy="40" r="15" fill="#fff" opacity="0.3" />
+  <path d="M225 80 Q250 100 275 80" fill="#fff" opacity="0.3" />
+  
+  <!-- Profile 4 -->
+  <circle cx="350" cy="50" r="40" fill="url(#profileGradient1)" />
+  <circle cx="350" cy="40" r="15" fill="#fff" opacity="0.3" />
+  <path d="M325 80 Q350 100 375 80" fill="#fff" opacity="0.3" />
+  
+  <!-- Profile 5 -->
+  <circle cx="450" cy="50" r="40" fill="url(#profileGradient2)" />
+  <circle cx="450" cy="40" r="15" fill="#fff" opacity="0.3" />
+  <path d="M425 80 Q450 100 475 80" fill="#fff" opacity="0.3" />
+  
+  <!-- Profile 6 -->
+  <circle cx="550" cy="50" r="40" fill="url(#profileGradient3)" />
+  <circle cx="550" cy="40" r="15" fill="#fff" opacity="0.3" />
+  <path d="M525 80 Q550 100 575 80" fill="#fff" opacity="0.3" />
+</svg>
